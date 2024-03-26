@@ -2,7 +2,7 @@
 import pandas as pd
 
 # 讀取Excel文件
-df = pd.read_excel("C:\\Users\\User\\Desktop\\cycu_ai2024\\20240312\\112年1-10月交通事故簡訊通報資料.xlsx")
+df = pd.read_excel("\\workspaces\\cycu_ai2024\\20240312\\112年1-10月交通事故簡訊通報資料.xlsx")
 
 # 顯示前5筆資料
 print(df.head())
