@@ -52,13 +52,19 @@ df_weather = pd.DataFrame(county_list)
 import matplotlib.pyplot as plt
 
 #merge df_taiwan and df_weather on df_taiwan.COUNTYNAME = df_weather.county 
-df_taiwan = df_taiwan.merge(df_weather, left_on = 'COUNTYNAME', right_on = 'county')
+geo_taiwan = pd.merge(df_taiwan, df_weather, left_on='COUNTYNAME', right_on='county')
 
-#plot
-fig, ax = plt.subplots(1, 1, figsize=(10, 10))
-df_taiwan.boundary.plot(ax=ax)
-df_taiwan.plot(column='max', ax=ax, legend=True)
+print (geo_taiwan)
 
+
+geo_taiwan.plot()
+plt.xlim(118,122)
+plt.ylim(21.5,25.5)
+
+#output countyname at centroid of each polygon
+for x, y, label in zip(geo_taiwan.geometry.centroid.x, geo_taiwan.geometry.centroid.y, geo_taiwan['min']):
+    plt.text(x, y, label, fontsize=8, ha='center')
+
+for x, y, label in zip(geo_taiwan.geometry.centroid.x, geo_taiwan.geometry.centroid.y, geo_taiwan['max']):
+    plt.text(x+ 0.2 , y, label, fontsize=8, ha='center')
 plt.show()
-##################################################
-
