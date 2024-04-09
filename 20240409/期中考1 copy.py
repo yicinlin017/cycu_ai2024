@@ -1,3 +1,5 @@
+#爬蟲https://scweb.cwa.gov.tw/zh-tw/earthquake/data/#
+#下載此網頁的CSV檔案 到/workspaces/cycu_ai2024/20240409/地震活動彙整_638482848123192524.csv
 #讀取/workspaces/cycu_ai2024/20240409/地震活動彙整_638482848123192524.csv
 #其解碼為big5
 #讀取欄位在資料夾的第二列
