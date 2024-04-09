@@ -12,9 +12,26 @@ df.to_csv('/workspaces/cycu_ai2024/20240409/earthquake.csv', index=False)
 df['地震時間'] = pd.to_datetime(df['地震時間'])
 df = df[df['地震時間'] > '2024-04-03']
 print(df)
-#將其繪製在地圖上 印出來
+#根據經度緯度座標將其標示在地圖上 印出來 存在資料夾中
+import pandas as pd
 import folium
+
+df = pd.read_csv('/workspaces/cycu_ai2024/20240409/地震活動彙整_638482848123192524.csv', encoding='Big5', header=1)
+df = df[['地震時間', '經度', '緯度', '規模']]
+print(df)
+df.to_csv('/workspaces/cycu_ai2024/20240409/earthquake.csv', index=False)
+
+df['地震時間'] = pd.to_datetime(df['地震時間'])
+df = df[df['地震時間'] > '2024-04-03']
+print(df)
+
 m = folium.Map(location=[23.5, 121], zoom_start=7)
-for i in range(len(df)):
-    folium.Marker([df.iloc[i]['緯度'], df.iloc[i]['經度']], popup=df.iloc[i]['規模']).add_to(m)
+
+for index, row in df.iterrows():
+    folium.Marker(
+        location=[row['緯度'], row['經度']],
+        popup=row['地震時間'],
+        icon=folium.Icon(icon='cloud')
+    ).add_to(m)
+
 m.save('/workspaces/cycu_ai2024/20240409/earthquake.html')
