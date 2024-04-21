@@ -535,94 +535,94 @@
             </tr>
         </thead>
         <tbody>
-                <tr onclick="SetLonLat(121.572, 24.0205)" style="cursor: pointer;">
-                    <td>201   </td>
-                    <td>04/13 22:26</td>
-                    <td>4.9</td>
-                    <td>11.5</td>
+                <tr onclick="SetLonLat(121.7423, 24.013)" style="cursor: pointer;">
+                    <td>213   </td>
+                    <td>04/21 17:54</td>
+                    <td>4.3</td>
+                    <td>26.1</td>
+                    <td>
+                        臺灣東部海域
+                    </td>
+                </tr>
+                <tr onclick="SetLonLat(121.6788, 24.1942)" style="cursor: pointer;">
+                    <td>212   </td>
+                    <td>04/21 11:07</td>
+                    <td>4.6</td>
+                    <td>24.8</td>
+                    <td>
+                        花蓮縣近海
+                    </td>
+                </tr>
+                <tr onclick="SetLonLat(121.675, 23.4888)" style="cursor: pointer;">
+                    <td>211   </td>
+                    <td>04/21 10:40</td>
+                    <td>5.6</td>
+                    <td>30.0</td>
+                    <td>
+                        臺灣東部海域
+                    </td>
+                </tr>
+                <tr onclick="SetLonLat(121.7695, 24.3383)" style="cursor: pointer;">
+                    <td>210   </td>
+                    <td>04/19 22:25</td>
+                    <td>4.6</td>
+                    <td>20.4</td>
+                    <td>
+                        宜蘭縣近海
+                    </td>
+                </tr>
+                <tr onclick="SetLonLat(121.6923, 23.9135)" style="cursor: pointer;">
+                    <td>209   </td>
+                    <td>04/17 17:17</td>
+                    <td>5.2</td>
+                    <td>19.2</td>
+                    <td>
+                        花蓮縣近海
+                    </td>
+                </tr>
+                <tr onclick="SetLonLat(121.7627, 24.1145)" style="cursor: pointer;">
+                    <td>208   </td>
+                    <td>04/17 02:59</td>
+                    <td>5.0</td>
+                    <td>18.4</td>
+                    <td>
+                        臺灣東部海域
+                    </td>
+                </tr>
+                <tr onclick="SetLonLat(121.7593, 24.2562)" style="cursor: pointer;">
+                    <td>207   </td>
+                    <td>04/16 08:37</td>
+                    <td>4.3</td>
+                    <td>10.0</td>
+                    <td>
+                        花蓮縣近海
+                    </td>
+                </tr>
+                <tr onclick="SetLonLat(121.7908, 24.244)" style="cursor: pointer;">
+                    <td>206   </td>
+                    <td>04/16 08:23</td>
+                    <td>4.2</td>
+                    <td>13.7</td>
+                    <td>
+                        花蓮縣近海
+                    </td>
+                </tr>
+                <tr onclick="SetLonLat(121.7515, 24.2562)" style="cursor: pointer;">
+                    <td>205   </td>
+                    <td>04/15 07:10</td>
+                    <td>4.0</td>
+                    <td>12.4</td>
+                    <td>
+                        花蓮縣近海
+                    </td>
+                </tr>
+                <tr onclick="SetLonLat(121.6628, 24.2137)" style="cursor: pointer;">
+                    <td>204   </td>
+                    <td>04/15 00:15</td>
+                    <td>4.2</td>
+                    <td>8.0</td>
                     <td>
                         花蓮縣秀林鄉
-                    </td>
-                </tr>
-                <tr onclick="SetLonLat(121.5157, 23.7402)" style="cursor: pointer;">
-                    <td>200   </td>
-                    <td>04/13 20:38</td>
-                    <td>4.4</td>
-                    <td>7.5</td>
-                    <td>
-                        花蓮縣壽豐鄉
-                    </td>
-                </tr>
-                <tr onclick="SetLonLat(120.1803, 23.3715)" style="cursor: pointer;">
-                    <td>199   </td>
-                    <td>04/13 04:00</td>
-                    <td>4.0</td>
-                    <td>10.2</td>
-                    <td>
-                        嘉義縣布袋鎮
-                    </td>
-                </tr>
-                <tr onclick="SetLonLat(120.1837, 23.3758)" style="cursor: pointer;">
-                    <td>198   </td>
-                    <td>04/13 02:44</td>
-                    <td>4.9</td>
-                    <td>10.4</td>
-                    <td>
-                        嘉義縣布袋鎮
-                    </td>
-                </tr>
-                <tr onclick="SetLonLat(121.6297, 22.3628)" style="cursor: pointer;">
-                    <td>197   </td>
-                    <td>04/12 22:20</td>
-                    <td>4.7</td>
-                    <td>14.5</td>
-                    <td>
-                        臺灣東南部海域
-                    </td>
-                </tr>
-                <tr onclick="SetLonLat(121.749, 23.9815)" style="cursor: pointer;">
-                    <td>196   </td>
-                    <td>04/12 08:54</td>
-                    <td>4.3</td>
-                    <td>23.1</td>
-                    <td>
-                        臺灣東部海域
-                    </td>
-                </tr>
-                <tr onclick="SetLonLat(121.6985, 23.9977)" style="cursor: pointer;">
-                    <td>195   </td>
-                    <td>04/12 08:29</td>
-                    <td>4.2</td>
-                    <td>27.6</td>
-                    <td>
-                        花蓮縣近海
-                    </td>
-                </tr>
-                <tr onclick="SetLonLat(121.706, 24.1413)" style="cursor: pointer;">
-                    <td>194   </td>
-                    <td>04/11 22:09</td>
-                    <td>4.0</td>
-                    <td>20.8</td>
-                    <td>
-                        花蓮縣近海
-                    </td>
-                </tr>
-                <tr onclick="SetLonLat(121.6735, 24.1767)" style="cursor: pointer;">
-                    <td>193   </td>
-                    <td>04/11 08:53</td>
-                    <td>4.1</td>
-                    <td>24.4</td>
-                    <td>
-                        花蓮縣近海
-                    </td>
-                </tr>
-                <tr onclick="SetLonLat(121.7702, 24.1852)" style="cursor: pointer;">
-                    <td>192   </td>
-                    <td>04/11 00:55</td>
-                    <td>4.9</td>
-                    <td>6.4</td>
-                    <td>
-                        臺灣東部海域
                     </td>
                 </tr>
         </tbody>
@@ -658,7 +658,7 @@
         <a href="javascript:" class="wrapperQuickMenuOpen" title="相關連結"></a>
         <ul class="wrapperQuickMenuList BulSet">
             <li>
-                <a class="BaSet" title="地震活動" href="/zh-tw/earthquake/data">
+                <a class="BaSet" title="地震活動" href="/zh-tw/earthquake/data/liexportcsv">
                     <img src="/images/wrapperQuickMenu_01.png" alt="">
                     <span>地震活動</span>
                 </a>
@@ -913,7 +913,7 @@
         var ddlStation = '';
         var ddlStationName = '';
         var toolbarInfo = '合計<span id=sTotal></span>個，顯著有感地震<span id=sEventNo></span>個，小區域地震<span id=sNone></span>個';
-        var pageViews = 303860;
+        var pageViews = 210562;
     </script>
     
     
