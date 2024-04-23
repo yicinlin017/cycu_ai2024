@@ -1,0 +1,64 @@
+start_date = 16
+end_date = 23
+
+# 生成日期範圍
+dates = [f"202404{i:02d}" for i in range(start_date, end_date + 1)]
+
+# 爬蟲
+for date in dates:
+    for i in range(24):
+        url = f"https://tisvcloud.freeway.gov.tw/history/TDCS/M04A/{date}/{i:02d}/"
+        response = requests.get(url)
+        if response.status_code == 200:
+            if not os.path.exists(date):
+                os.mkdir(date)
+            with open(f"{date}/{date}_{i:02d}.csv", "wb") as f:
+                f.write(response.content)
+                print(f"下載 {url} 成功")
+        else:
+            print(f"下載 {url} 失敗")
+
+
+
+
+# 數據集
+data = []
+for i in range(24):
+    df = pd.read_csv(f"20240423/20240423_{i:02d}.csv")
+    data.append(df)
+data = pd.concat(data)
+data = data.reset_index(drop=True)
+print(data)
+
+# 加載數據集
+iris = datasets.load_iris()
+X = iris.data
+y = iris.target
+
+# 切分數據集為訓練集和測試集
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# 特徵標準化
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+#印出來
+print(X_train)
+print(X_test)
+
+# 創建SVM分類器實例，這裡使用預設的核函數（RBF核）
+model = SVC(kernel='rbf', decision_function_shape='ovo')
+
+# 訓練模型
+model.fit(X_train, y_train)
+#印出來
+print(model)
+
+# 進行預測
+y_pred = model.predict(X_test)
+
+
+# 計算準確率
+accuracy = accuracy_score(y_test, y_pred)
+
+print(f"預測準確率為: {accuracy:.2f}")
