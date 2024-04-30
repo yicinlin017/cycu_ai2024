@@ -1,42 +1,59 @@
-# https://tisvcloud.freeway.gov.tw/history/TDCS/M05A/
-#爬蟲網址https://tisvcloud.freeway.gov.tw/history/TDCS/M04A/20240416/00/ 到 https://tisvcloud.freeway.gov.tw/history/TDCS/M04A/20240423/23/   所有CSV的資料
-#下載TDCS_M04A_YYYYMMDD_hhmmss.csv YYYY為2024 MM為月份 DD為日期 hh為小時  mm為分鐘 ss為秒 MMDD取0416到0423 hh取00到23 mm取00到55 ss取00
-#下載後存入資料夾/workspaces/cycu_ai2024/20240423
-#下載後存成CSV檔案
-#檔名範例 TDCS_M05A_20240423_203500.csv TDCS_M05A_20240423_203000.csv TDCS_M05A_20240423_202500.csv
-#檔案內容範例
-#車道,方向,位置,車種,日期,時間,當量
-#1,0,0,31,20240423,00,0
-#1,0,0,32,20240423,00,0
-#1,0,0,51,20240423,00,0
+#爬蟲網址https://tisvcloud.freeway.gov.tw/history/TDCS/M04A/20240416/00/ 到 https://tisvcloud.freeway.gov.tw/history/TDCS/M04A/20240423/23/   
+#爬蟲網址使用回圈生成 格式https://tisvcloud.freeway.gov.tw/history/TDCS/M04A/YYYYMMDD/HH/ YYYY為2024 MM為月份 DD為日期 HH為小時
+#印出迴圈產生之網址
 
-
+#下載各網址所有CSV的資料
+#下載後存入資料夾/workspaces/cycu_ai2024/middlework
 import requests
 import os
+import time
+import datetime
 import pandas as pd
 from datetime import datetime
-from sklearn import datasets
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-from sklearn.svm import SVC
-from sklearn.metrics import accuracy_score
-import matplotlib
-start_date = 16
-end_date = 23
+from datetime import timedelta
+import csv
+import re
 
-# 生成日期範圍
-dates = [f"202404{i:02d}" for i in range(start_date, end_date + 1)]
+#生成日期清單
+daystart = datetime.strptime("20240416", "%Y%m%d")
+dayend = datetime.strptime("20240423", "%Y%m%d")
+daygenerated = [daystart + timedelta(days=x) for x in range(0, (dayend-daystart).days + 1)]
 
-# 爬蟲
-for date in dates:
-    for i in range(24):
-        url = f"https://tisvcloud.freeway.gov.tw/history/TDCS/M04A/{date}/{i:02d}/"
+#生成小時清單
+hourgenerated = []
+for i in range(0,24):
+    hourgenerated.append(str(i).zfill(2))
+
+#生成分鐘清單
+mingenerated = []
+for i in range(0,60,5):
+    mingenerated.append(str(i).zfill(2))
+
+#生成網址清單
+url_list = []
+for day in daygenerated:
+    for hour in hourgenerated:
+        for minute in mingenerated:
+            url = "https://tisvcloud.freeway.gov.tw/history/TDCS/M04A/"+day.strftime("%Y%m%d")+"/"+hour+"/"+minute+"/"
+            url_list.append(url)
+
+#下載檔案
+
+for url in url_list:
+    try:
         response = requests.get(url)
-        if response.status_code == 200:
-            if not os.path.exists(date):
-                os.mkdir(date)
-            with open(f"{date}/{date}_{i:02d}.csv", "wb") as f:
-                f.write(response.content)
-                print(f"下載 {url} 成功")
-        else:
-            print(f"下載 {url} 失敗")
+        response.raise_for_status()
+        print("下載成功")
+    except requests.exceptions.RequestException as e:
+        print("下載失敗")
+        continue
+    #取得檔案名稱
+    filename = re.search(r'(?<=M04A/)\d{8}/\d{2}/\d{2}', url).group(0)
+    filename = filename.replace("/", "")
+    filename = filename.replace("/", "")
+    filename = filename + ".csv"
+    #存檔
+    with open("/workspaces/cycu_ai2024/middlework/"+filename, "wb") as f:
+        f.write(response.content)
+    time.sleep(1)
+print("下載結束")
