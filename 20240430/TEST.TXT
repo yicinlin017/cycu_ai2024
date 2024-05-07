@@ -30,3 +30,9 @@ df = df.pivot_table(index=["時間", "地點", "方向"], columns="車種", valu
 print(df)
 #儲存成/workspaces/cycu_ai2024/20240430/TDCS_M03A_20240429_0000001.csv
 df.to_csv("/workspaces/cycu_ai2024/20240430/TDCS_M03A_20240429_0000001.csv")
+
+
+05
+,時間,地點1,地點2,車種,單一車輛計算車速,交通量
+03
+時間,地點,方向,5,31,32,41,42
