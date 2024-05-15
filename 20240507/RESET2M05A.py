@@ -34,11 +34,13 @@ print(data)
 #去除地點2欄位
 data = data.drop(columns=['地點2'])
 print(data)
-#地點一欄位只保留第一個字元+第二個字元為01的資料 其他資料不要 
+#地點一欄位去掉第二個字元不為01的資料 
+data = data[data['地點1'].str[1]=='1']
+print(data)
 #將地點1資料改為第4個字元~第7個字元
-#data['地點1'] = data['地點1'].str[3:7]
-#data = data[data['地點1']=='01']
-#print(data)
+data['地點1'] = data['地點1'].str[3:7]
+
+print(data)
 #將資料輸出成CSV檔案
 data.to_csv('/workspaces/cycu_ai2024/20240507/RESETLASTM05A.csv',index=False)
 

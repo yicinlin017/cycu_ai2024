@@ -1,0 +1,54 @@
+#將欄位改為 時間、地點1、地點2、小客車交通量、小貨車交通量、大客車交通量、大貨車交通量、聯結車交通量、小客車車速、小貨車車速、大客車車速、大貨車車速、聯結車車速
+#車種內 31為小客車、32為小貨車、41為大客車、42為大貨車、5為聯結車
+
+
+
+#讀取/workspaces/cycu_ai2024/20240507/RESETLASTM05A.csv
+import pandas as pd
+data = pd.read_csv('/workspaces/cycu_ai2024/20240507/RESETLASTM05A.csv')
+
+#只取用時間、地點1、小客車交通量、小客車車速
+data = data[['時間','地點1','小客車交通量','小客車車速']]
+
+#打印
+print(data)
+
+#繪製3D曲面圖 X軸為時間 Y軸為地點1 Z軸為小客車交通量
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+ax.plot_trisurf(data['時間'], data['地點1'], data['小客車交通量'])
+
+#在圖表中加入標題 11272006林意芹
+plt.title('11272006林意芹')
+
+#儲存/workspaces/cycu_ai2024/20240514/3D.png
+plt.savefig('/workspaces/cycu_ai2024/20240514/3D.png')
+....................
+
+from mpl_toolkits.mplot3d import Axes3D
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+ax.plot_trisurf(data['時間'], data['地點1'], data['小客車交通量'])
+
+#根據小客車交通量對應的小客車車速 在3D曲面圖上加入顏色
+#0為白色 1~20為紫色 21~40為紅色 41~60為橘色 61~80為黃色 81以上為綠色
+import numpy as np
+import matplotlib.colors as mcolors
+c = data['小客車車速']
+norm = mcolors.Normalize(vmin=0, vmax=100)
+# 使用 matplotlib.colormaps.get_cmap(obj) 代替 plt.cm.get_cmap('viridis')
+cmap = matplotlib.colormaps.get_cmap('viridis')
+
+# 在儲存圖片之前，設定字體以支援中文字符
+plt.rcParams['font.sans-serif'] = ['SimHei']  # 或者其他支援中文的字體
+
+sc = ax.scatter(data['時間'], data['地點1'], data['小客車交通量'], c=c, cmap=cmap, norm=norm)
+plt.colorbar(sc)
+
+# 在圖表中加入標題 11272006林意芹
+plt.title('11272006林意芹')
+
+# 儲存/workspaces/cycu_ai2024/20240514/3D.png
+plt.savefig('/workspaces/cycu_ai2024/20240514/3D.png')
